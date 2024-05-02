@@ -3,9 +3,9 @@ const mysql = require("mysql2");
 const connection = mysql.createConnection({
   host: "localhost",
   // host: "db",
-  port: "5000", // Thay đổi cổng kết nối MySQL
+  port: "3307", // Thay đổi cổng kết nối MySQL
   user: "root",
-  password: "gin@17022001",
+  password: "my-secret-pw",
   database: "my_database",
 });
 connection.connect((err) => {

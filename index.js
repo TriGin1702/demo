@@ -6,8 +6,8 @@ require("./config/express")(app);
 
 // Cấu hình các routes API
 const productRoutes = require("./api/api_product");
-const admin = require("./home");
-const create = require("./create");
+const admin = require("./router/home");
+const create = require("./router/create");
 app.use("/api/products", productRoutes);
 app.use("/create", create);
 app.use("/", admin);

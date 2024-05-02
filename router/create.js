@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const time = Date.now();
 const multer = require("multer");
-const connect = require("./config/connect");
+const connect = require("../config/connect");
+const { default: axios } = require("axios");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./public/image");
@@ -28,6 +29,7 @@ router.post("/", upload.single("image"), async (req, res) => {
     const description = req.body.description;
     const price = req.body.gia;
     const brand = req.body.brand;
+    const image = req.file.originalname;
     console.log(name, description, price, brand);
     let dongbo;
     if (req.file) {
@@ -46,8 +48,6 @@ router.post("/", upload.single("image"), async (req, res) => {
         }
       }
     );
-
-    // Trả về kết quả thành công hoặc thất bại cho người dùng
     res.redirect("/");
   } catch (err) {
     console.error(err);
